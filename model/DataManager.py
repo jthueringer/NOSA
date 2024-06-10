@@ -322,10 +322,11 @@ class DataManager():
                 selection = len(self.objects) - 1
 
         # if merge tif of old object is active inactivate it for ROI cell calculation
-        merge_tif = self.getCurrentPipeline()._merged_tif
-        if merge_tif.active:
-            merge_tif.active = False
-            merge_tif.setState()
+        if not prevent_feature_undisplay:
+            merge_tif = self.getCurrentPipeline()._merged_tif
+            if merge_tif.active:
+                merge_tif.active = False
+                merge_tif.setState()
 
         # check if background subtraction / baseline is active. if it is, we undisplay it.
         if not prevent_feature_undisplay:
