@@ -183,11 +183,10 @@ class DataManager():
         source = self.sources[source_index]
 
         # if feature merge tif is active inactivate it
-        if source.merged_tif_active:
-            merge_tif = self.getCurrentPipeline()._merged_tif
-            if merge_tif.active:
-                merge_tif.active = False
-                merge_tif.setState()
+        merge_tif = self.getCurrentPipeline()._merged_tif
+        if merge_tif.active:
+            merge_tif.active = False
+            merge_tif.setState()
         
         # measure time for progressdialog
         start_time = time.process_time()
